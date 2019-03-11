@@ -16,13 +16,18 @@
 
 // First, initialize the form, the submitHandler, and the object
 
+const output = document.querySelector("output");
+const applicantInfo = [];
+
 const submitHandler = function submitHandler(e) {
   e.preventDefault(); // Prevents the default from following its default.  Duh.
 
   // Initialize the monthlyPlan object.
   const monthlyPlan = {
+    name: document.querySelector("#name").value,
+    age: document.querySelector("#age").value,
     amount: document.querySelector("#amount").value,
-    interest: document.querySelector("#interest").value / 100,
+    interest: document.querySelector("#interest").value / 1200,
     period: document.querySelector("#period").value
   };
 
@@ -30,11 +35,13 @@ const submitHandler = function submitHandler(e) {
   const r = monthlyPlan.interest;
   const n = monthlyPlan.period;
 
-  const p = (r * pv) / (1 - (1 + r) ** -n);
+  const mp = (r * pv) / (1 - (1 + r) ** -n);
+  const tp = n * mp - pv;
   // Find a way to allow the value of "interest" to be a double (decimal).
 
-  console.log(monthlyPlan); // SUCCESS.
-  console.log(p);
+  applicantInfo.push(monthlyPlan.name, monthlyPlan.age, pv, r, n, mp, tp);
+
+  output.textContent = applicantInfo;
 };
 
 // Here, we listen for and handle the 'submit' event.
