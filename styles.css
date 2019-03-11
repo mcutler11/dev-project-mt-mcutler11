@@ -1,1 +1,8 @@
-
+body { font-family: Verdana, Arial, sans-serif;
+background-color: #87CEFA
+}
+#wrapper { background-color: #B3C736;
+color: #000066;
+width: 80%;
+margin: auto;
+}
